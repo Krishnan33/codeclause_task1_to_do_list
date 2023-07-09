@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TO DO LIST</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+			font-family:sans-serif;
+
+
+		}
+		header{
+			height:60px;
+			background-color:blueviolet;
+
+		}
+		header h1{
+			color:white;
+			padding:10px;
+			text-align:center;
+
+		}
+
+		main{
+
+			padding:30px;
+			margin:50px auto;
+			border:3px violet solid;
+			width:500px;
+			height:500px;
+			display:flex;
+			flex-direction:column;
+			align-items:center;
+
+		}
+
+		form{
+			margin:20px;
+
+		}
+
+		#mytext{
+			padding:0 10px;
+			margin-right:10px;
+			height:30px;
+		}
+
+		#addBtn{
+			background-color:violet;
+			padding:5px;
+		}
+
+		#addBtn:hover{
+			cursor:pointer;
+			background-color:rgb(255,75,255);
+
+		}
+
+
+		ul{
+			width:100%;
+			background-color:violet;
+			list-style:none;
+
+		}
+		li{
+			position:relative;
+			padding:10px;
+		}
+
+		.close{
+			cursor:pointer;
+			position:absolute;
+			top:0;
+			right:0;
+			padding:10px;
+
+		}
+
+		.close:hover{
+			background-color:thistle;
+
+
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>TO DO LIST</h1>
+	</header>
+
+	<main>
+
+		<form>
+			<input type="text" placeholder="Enter the Text here" id="mytext">
+			<span onclick="mylist()" id="addBtn">Add</span>
+		</form>
+
+		<ul id="myUl">
+
+			<li>Red</li>
+			<li>Green</li>
+		</ul>
+	</main>
+	<script>
+
+		var list = document.getElementsByTagName('li');
+		for (var i=0;i<list.length;i++){
+			var span=document.createElement("span");
+			span.className="close";
+			var close=document.createTextNode("X");
+			span.appendChild(close);
+			list[i].appendChild(span);
+
+		}
+
+		var close=document.getElementsByClassName("close");
+		for(i=0;i<close.length;i++){
+			close[i].onclick=function(){
+				var d=this.parentElement;
+				d.style.display="none";
+			}
+		}
+
+		function mylist() {
+			var li=document.createElement("li");
+			var mytxt=document.getElementById("mytext").value;
+			var t = document.createTextNode(mytxt);
+			li.appendChild(t);
+			if(mytxt == "" ){
+				alert("Input Field is Empty");
+
+			}else{
+				document.getElementById("myUl").appendChild(li);
+			}
+			var list=document.getElementsByTagName('li');
+			for (var i=0;i < list.length;i++){
+			var span=document.createElement("span");
+			span.className="close";
+			var close=document.createTextNode("X");
+			span.appendChild(close);
+			list[i].appendChild(span);
+
+		}
+
+		var close=document.getElementsByClassName("close");
+		for(i=0;i<close.length;i++){
+			close[i].onclick=function(){
+				var d=this.parentElement;
+				d.style.display="none";
+			}
+		}
+		
+		}
+	</script>
+</body>
+</html>
